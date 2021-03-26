@@ -1,12 +1,13 @@
-let singleVendor = null;
-
 $().ready(() => {
 
-        vendorDetail(2)
+    $("button").click(() => {
+        let id = $("#vid").val();
+        vendorDetail(id)
         .done((vendor) => {
-            singleVendor = vendor;
-            display(singleVendor);
+            console.log("Vendor:", vendor);
+            display(vendor);
         })
+    })
 })
 
 const display = (vendor) => {
