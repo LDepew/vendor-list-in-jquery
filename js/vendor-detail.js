@@ -17,6 +17,6 @@ const display = (vendor) => {
     $("#pcity").text(vendor.city);
     $("#pstate").text(vendor.state);
     $("#pzip").text(vendor.zip);
-    $("#pphone").text(vendor.phone);
-    $("#pemail").text(vendor.email);
+    $("#pphone").text(vendor.phone ?? "NA");
+    $("#pemail").text(vendor.email ?? "NA");
 }
