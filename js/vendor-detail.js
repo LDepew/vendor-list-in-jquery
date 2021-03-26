@@ -7,8 +7,11 @@ $().ready(() => {
             console.log("Vendor:", vendor);
             display(vendor);
         })
-    })
-})
+        .fail((err) => {
+            alert("Vendor not found!")
+        });
+    });
+});
 
 const display = (vendor) => {
     $("#pid").text(vendor.id);
