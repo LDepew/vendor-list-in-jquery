@@ -17,3 +17,14 @@ const vendorCreate = (vendor) => {
     })
 }
 
+const vendorUpdate = (vendor) => {
+    return $.ajax({
+        method: "PUT",
+        url: url,
+        data: JSON.stringify(vendor),
+        contentType: "application/json"
+    })
+}
+const vendorRemove = (id) => {
+
+}
