@@ -1,26 +1,56 @@
-$().ready(() => {
+//let id = $("#vid").val();
+//should be onclick()
 
-    $("button").click(() => {
-        let id = $("#pid").val();
+
+$().ready(()=>{
+    console.log("jQuery is ready!");
+    let id = $("#pid").val();
+    console.log("id = " + id);
         vendorDetail(id)
         .done((vendor) => {
-            console.log("Vendor:", vendor);
             display(vendor);
+            console.log(vendor);
         })
         .fail((err) => {
-            alert("Vendor not found!")
+            alert("Vendor not found!");
         });
+    
+
+
+    $("#update").click(() => {
+
+        let vendor = {
+            id: $("#pid").val(),
+            code: $("#pcode").val(),
+            name: $("#pname").val(),
+            address: $("#paddress").val(),
+            city: $("#pcity").val(),
+            state: $("#pstate").val(),
+            zip: $("#pzip").val(),
+            phoneNumber: $("#pphone").val(),
+            email: $("#pemail").val()
+        }
+        console.log(vendor);
+        console.debug("vendor before:", vendor);
+        vendorCreate(vendor)
+            .done((res)=> {
+                console.log("Update successful:",res);
+            })
+            .fail((err) => {
+                console.error("update failed:",err);
+            });
     });
 });
 
 const display = (vendor) => {
-    $("#pid").text(vendor.id);
-    $("#pcode").text(vendor.code);
-    $("#pname").text(vendor.name);
-    $("#paddr").text(vendor.address);
-    $("#pcity").text(vendor.city);
-    $("#pstate").text(vendor.state);
-    $("#pzip").text(vendor.zip);
-    $("#pphone").text(vendor.phone ?? "NA");
-    $("#pemail").text(vendor.email ?? "NA");
-}
+    $("#pid").val(vendor.id);
+    $("#pcode").val(vendor.code);
+    $("#pname").val(vendor.name);
+    $("#paddress").val(vendor.address);
+    $("#pcity").val(vendor.city);
+    $("#pstate").val(vendor.state);
+    $("#pnumber").val(vendor.number);
+    $("#pzip").val(vendor.zip);
+    $("#pphone").val(vendor.phoneNumber ?? "NA");
+    $("#pemail").val(vendor.email ?? "NA");
+    }
